@@ -1,4 +1,5 @@
 ## HTML おさらい
+### 文字の扱い方
 <b>太字 Bold</b>
 <h2 style="color:red;">色付きの見出し color-tinted headline</h2>
 <p style="color:green;">色付きの段落 color-tinted paragraph</p>
@@ -17,7 +18,53 @@
 改行<br>マークダウンの\を入れることで行末ならば改行できる\
 改行
 
+### リストの作成
+<ul>
+   <li>牛乳</li>
+   <li>砂糖</li>
+   <li>小麦粉</li>
+</ul>
 
+順序なしのリストを作れる
+
+<ol>
+  <li>いちご</li>
+  <li>りんご</li>
+  <li>みかん</li>
+</ol>
+これは順序ありのリストを作れる。
+正直、このファイルで使うならば下のように書いたほうが簡単
+
+1. リンゴ
+2. イチゴ
+3. ミカン
+
+<dl>
+  <dt>名前<dt>
+  <dd>HANA</dd>
+  <dt>居住地域<dt>
+  <dd>大阪</dd>
+  <dd>福岡</dd>
+</dl>
+
+dlはリストの定義（definition list）、dtはリストの項目（definition team）、ddはリストの値（definition description）。
+
+### 画像を添付する場合
+<img src="/docs/test.png" alt="テスト画像" width="200">\
+<img src="test.png" alt="テスト画像" width="200">\
+一応widthだけ指定すれば縦横比を保ったまま拡大縮小してくれるが、heightも指定することで縦横比を変えられる。
+alt属性は画像のタイトルみたいなもので、画像が表示されない場合にテキストが記載されるらしい。
+
+Shield
+
+<img src="https://img.shields.io/badge/-{言語、フレームワーク名など}-{シールドのカラーコード}.svg?logo=next.js&style={バッチのスタイル}&logoColor={ロゴのカラーコード}">
+
+### リンク
+<a href="https://www.google.com">Googleへ飛ぶ</a>\
+あまり使いたくない。
+Gitとかの成果物を記載したいときや出典を記載したいときに使う？
+
+<blockquote>引用するときはこれを使うといい</blockquote>
 
 
 ## 要旨
