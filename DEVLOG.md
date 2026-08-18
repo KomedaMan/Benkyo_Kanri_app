@@ -1,3 +1,25 @@
+## HTML おさらい
+<b>太字 Bold</b>
+<h2 style="color:red;">色付きの見出し color-tinted headline</h2>
+<p style="color:green;">色付きの段落 color-tinted paragraph</p>
+<span style="color:blue;">色付きの文字範囲 color-tinted span</span>
+
+<p style="background-color: yellow;">黄色い背景</p>
+<div style="background-color: lightblue;">水色の背景のボックス</div>
+
+<p style="color: white; background-color: black;">
+  白い文字に黒い背景
+</p>
+
+カラーコード指定もできる
+<p style="color: #ff0000;">赤い文字（#ff0000）</p>
+
+改行<br>マークダウンの\を入れることで行末ならば改行できる\
+改行
+
+
+
+
 ## 要旨
 応用情報試験の勉強に際して日々の正答率を管理するためのアプリを作成する
 応用情報過去問道場の正答率は総合したものは出るが、日々の正答率は出ない。
@@ -56,3 +78,15 @@
 ⑩改善点
 ...
 
+## =============================================
+## MEMO
+## =============================================
+
+### roundとdecimal
+roundは偶数への丸めのため一般的な四捨五入ではない。
+偶数への丸めは少数部分xとし、整数部分をyとすると\
+x < 0.5 ならば x = 0（切り捨て）\
+x > 0.5 ならば x = 1　とする（切り上げ）\
+<span style="color: red;">x = 0.5 ならば ｙが偶数になるほうに丸める。</span>yが偶数ならば切り捨て、yが奇数なら切り上げになる。
+
+そのためここではdecimalを使わなければならない。
