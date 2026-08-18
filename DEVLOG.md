@@ -1,6 +1,12 @@
 ## HTML おさらい
 ### 文字の扱い方
 <b>太字 Bold</b>
+
+<strong>強調</strong>
+
+こと上記においてはどちらでもいいと思う。
+
+
 <h2 style="color:red;">色付きの見出し color-tinted headline</h2>
 <p style="color:green;">色付きの段落 color-tinted paragraph</p>
 <span style="color:blue;">色付きの文字範囲 color-tinted span</span>
@@ -17,6 +23,8 @@
 
 改行<br>マークダウンの\を入れることで行末ならば改行できる\
 改行
+
+
 
 ### リストの作成
 <ul>
@@ -65,6 +73,21 @@ Shield
 Gitとかの成果物を記載したいときや出典を記載したいときに使う？
 
 <blockquote>引用するときはこれを使うといい</blockquote>
+
+
+### 特殊文字
+&#34;あるいは&quot;と記述するとダブルクォーテーションになる
+
+<blockquote>
+   文字	    文字名	文字コード
+   “	    &quot;	&#34;
+   &	    &amp;	&#38
+   <	    &lt;	&#60
+   >	    &gt;	&#62
+   スペース	&nbsp;	&#160
+   ©	    &copy;	&#169
+</blockquote>
+
 
 
 ## 要旨
