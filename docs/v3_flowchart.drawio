@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ページ-1" id="ZUNIG0RRxK2ahfVUJASb">
+    <mxGraphModel dx="1172" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="28_s41Yr89ar_ipUkjn6-13" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="28_s41Yr89ar_ipUkjn6-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="開始" vertex="1">
+          <mxGeometry height="60" width="120" x="354" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-15" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-3" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="正答数の入力" vertex="1">
+          <mxGeometry height="60" width="120" x="354" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-16" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-17" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-4" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="問題数は０か？" vertex="1">
+          <mxGeometry height="80" width="188" x="320" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-14" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-5" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="問題数の入力" vertex="1">
+          <mxGeometry height="60" width="120" x="354" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-23" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="490" />
+              <mxPoint x="60" y="490" />
+              <mxPoint x="60" y="120" />
+              <mxPoint x="410" y="120" />
+            </Array>
+            <mxPoint x="410" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="今日は解かなかった旨を出力" vertex="1">
+          <mxGeometry height="60" width="120" x="150" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-18" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-8" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="問題数は正答数より多いか？" vertex="1">
+          <mxGeometry height="80" width="188" x="320" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-24" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="610" />
+              <mxPoint x="750" y="610" />
+            </Array>
+            <mxPoint x="420" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="不正な入力である旨を出力" vertex="1">
+          <mxGeometry height="60" width="120" x="570" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-20" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="正答率を導出&lt;div&gt;(正答数/問題数)*100 (%)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="172" x="329" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-22" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="28_s41Yr89ar_ipUkjn6-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="正答率を出力" vertex="1">
+          <mxGeometry height="60" width="120" x="355" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="終了" vertex="1">
+          <mxGeometry height="60" width="120" x="355" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-19" edge="1" parent="1" source="28_s41Yr89ar_ipUkjn6-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.491;entryY=0.055;entryDx=0;entryDy=0;entryPerimeter=0;" target="28_s41Yr89ar_ipUkjn6-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="True" vertex="1">
+          <mxGeometry height="30" width="60" x="270" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-26" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="False" vertex="1">
+          <mxGeometry height="30" width="60" x="430" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="True" vertex="1">
+          <mxGeometry height="30" width="60" x="354" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="28_s41Yr89ar_ipUkjn6-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="False" vertex="1">
+          <mxGeometry height="30" width="60" x="501" y="470" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
