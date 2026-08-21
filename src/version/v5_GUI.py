@@ -1,15 +1,10 @@
 """GUIの作成と動作を関数化してmainで使用できるようにする。"""
 import tkinter as tk
-import v6_func
+
 from src.version.v4_GUI import entry_que, entry_cor_ans
 
 
-def button_push():
-    que = entry_que.get()
-    cor = entry_cor_ans.get()
-    print(test_gui(que, cor))
-
-def test_gui(rate):
+def test_gui():
     root = tk.Tk()
     root.title("GUI_test_app")
     root.geometry('1440x1024')
@@ -20,7 +15,7 @@ def test_gui(rate):
     frame_input.pack()
 
     # 日付フレームの作成
-    frame_date = tk.Frame(frame_input, width=400, height=500,bg="black")
+    frame_date = tk.Frame(frame_input, width=400, height=500, bg="black")
     frame_date.grid(row=0, column=0)
 
     # 解いた問題数フレームの作成
@@ -55,11 +50,19 @@ def test_gui(rate):
     entry_cor_ans.pack(padx=10, pady=10)
 
     # 計算ボタン
-    button_cal = tk.Button(frame_que, text="計算")
-
-    button_cal.bind(command=button_push)
+    button_cal = tk.Button(frame_que, text="計算", command=button_push)
     button_cal.pack(pady=10)
 
+    text = tk.StringVar(frame_output)
+    text.set("")
+
     root.mainloop()
+
+
+def button_push():
+    que = entry_que.get()
+    cor = entry_cor_ans.get()
+    print(test_gui(que, cor))
+
 
 test_gui()

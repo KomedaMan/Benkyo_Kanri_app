@@ -8,13 +8,12 @@ def test_calc(que, cor):
         if que == 0:  # 問題数が0ならば処理しない
             return
         elif que < cor:  # 問題数が正答数より多いなら、不正なので処理しない。
-            return
+            print("ooi")
         else:
-            rate = Decimal(str((cor / que) * 100)).quantize(Decimal("0.01"),
-                                                            rounding=ROUND_HALF_UP)
+            rate = Decimal(str((cor / que) * 100)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
             return rate
     except ValueError:
-        return
+       print("ValueError")
 
 
 
