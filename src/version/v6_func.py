@@ -11,7 +11,8 @@ def test_calc(que, cor):
             print("ooi")
         else:
             rate = Decimal(str((cor / que) * 100)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-            return rate
+            # rateはdecimal型なのでstrに変形する
+            return str(rate)
     except ValueError:
        print("ValueError")
 
