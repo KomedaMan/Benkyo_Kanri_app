@@ -6,29 +6,32 @@ root.title("GUI_test_app")
 root.geometry('1440x1024')
 
 # 入力欄フレームの作成
-frame_input = tk.Frame(root, width=1440, height=512, bg="gray")
+frame_input = tk.Frame(root, width=1440, height=450, bg="gray")
 # frame_input.propagate(False)    #サイズを固定する
 frame_input.pack()
 
 # 日付フレームの作成
-frame_date = tk.Frame(frame_input, width=400, height=500,bg="black")
+frame_date = tk.Frame(frame_input, width=400, height=400,bg="black")
 frame_date.grid(row=0, column=0)
 
 # 解いた問題数フレームの作成
-frame_que = tk.Frame(frame_input, width=400, height=500, bg="white")
+frame_que = tk.Frame(frame_input, width=400, height=400, bg="white")
 # frame_que.propagate(False)
 frame_que.grid(row=0, column=1)
 
 # 正答数フレームの作成
-frame_cor_ans = tk.Frame(frame_input, width=400, height=500, bg="blue")
+frame_cor_ans = tk.Frame(frame_input, width=400, height=400, bg="blue")
 frame_cor_ans.grid(row=0, column=2)
 
+# センターフレームの作成
+frame_center = tk.Frame(root, width=1440, height=100)
+frame_center.pack()
 
 # 日付欄の記述
 label_date = tk.Label(frame_date, text="日付", background="gray")
-label_date.pack(pady=10)
+label_date.pack(pady=10, side="top")
 entry_date = tk.Entry(frame_date, width=50)
-entry_date.pack(padx=10, pady=10)
+entry_date.pack(padx=10, pady=10, side="top")
 
 # 解いた問題数欄の記述
 label_que = tk.Label(frame_que, text="解いた問題数")
@@ -42,5 +45,8 @@ label_cor_ans.pack()
 entry_cor_ans = tk.Entry(frame_cor_ans, width=50)
 entry_cor_ans.pack(padx=10, pady=10)
 
+# 計算ボタン
+button_cal = tk.Button(frame_center, text="計算")
+button_cal.pack(pady=10)
 
 root.mainloop()

@@ -1,7 +1,7 @@
 """GUIの作成と動作を関数化してmainで使用できるようにする。"""
 import tkinter as tk
 
-def test_gui():
+def test_gui(rate):
     root = tk.Tk()
     root.title("GUI_test_app")
     root.geometry('1440x1024')
@@ -24,6 +24,9 @@ def test_gui():
     frame_cor_ans = tk.Frame(frame_input, width=400, height=500, bg="blue")
     frame_cor_ans.grid(row=0, column=2)
 
+    # 出力フレーム
+    frame_output = tk.Frame(root, width=1440, height=512)
+    frame_output.pack()
 
     # 日付欄の記述
     label_date = tk.Label(frame_date, text="日付", background="gray")
@@ -43,5 +46,8 @@ def test_gui():
     entry_cor_ans = tk.Entry(frame_cor_ans, width=50)
     entry_cor_ans.pack(padx=10, pady=10)
 
+    # 計算ボタン
+    button_cal = tk.Button(frame_que, text="計算")
+    button_cal.pack(pady=10)
 
     root.mainloop()
