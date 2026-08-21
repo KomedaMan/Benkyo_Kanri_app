@@ -1,5 +1,13 @@
 """GUIの作成と動作を関数化してmainで使用できるようにする。"""
 import tkinter as tk
+import v6_func
+from src.version.v4_GUI import entry_que, entry_cor_ans
+
+
+def button_push():
+    que = entry_que.get()
+    cor = entry_cor_ans.get()
+    print(test_gui(que, cor))
 
 def test_gui(rate):
     root = tk.Tk()
@@ -48,6 +56,10 @@ def test_gui(rate):
 
     # 計算ボタン
     button_cal = tk.Button(frame_que, text="計算")
+
+    button_cal.bind(command=button_push)
     button_cal.pack(pady=10)
 
     root.mainloop()
+
+test_gui()
