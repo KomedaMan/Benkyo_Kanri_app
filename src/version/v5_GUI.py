@@ -1,10 +1,17 @@
 """GUIの作成と動作を関数化してmainで使用できるようにする。"""
 import tkinter as tk
 
-from src.version.v4_GUI import entry_que, entry_cor_ans
+from src.version.v6_func import test_calc
 
-
+# GUI関数（メイン処理で使えるように関数化する。）
 def test_gui():
+
+    def button_push():
+        que = entry_que.get()
+        cor = entry_cor_ans.get()
+        print(test_calc(que, cor) + "%")
+    #    上を消してここの下にGUIに結果を載せる処理を書く
+
     root = tk.Tk()
     root.title("GUI_test_app")
     root.geometry('1440x1024')
@@ -53,16 +60,15 @@ def test_gui():
     button_cal = tk.Button(frame_que, text="計算", command=button_push)
     button_cal.pack(pady=10)
 
+    # 結果記載用テキスト
     text = tk.StringVar(frame_output)
     text.set("")
 
+    # メインループ
     root.mainloop()
 
 
-def button_push():
-    que = entry_que.get()
-    cor = entry_cor_ans.get()
-    print(test_gui(que, cor))
+
 
 
 test_gui()
