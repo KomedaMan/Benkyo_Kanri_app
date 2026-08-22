@@ -1,7 +1,9 @@
-"""v5よりもよりフレームの使い方をシンプルにした。"""
+"""v5よりもよりフレームの使い方をシンプルにした。
+日付欄はカレンダーにする
+"""
 
 import tkinter as tk
-
+from tkcalendar import DateEntry
 from src.version.v6_func import test_calc
 
 # GUI関数（メイン処理で使えるように関数化する。）
