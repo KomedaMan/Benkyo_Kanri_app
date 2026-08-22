@@ -1,4 +1,15 @@
 """GUIの作成と動作を関数化してmainで使用できるようにする。"""
+
+""" 
+進捗：なんとなくこんな感じという形はできた。
+今後
+・レイアウトを整える。
+・変数を記憶しておき、前日の結果を表示できるようにする
+・データベース化する
+・グラフ化する
+とか
+"""
+
 import tkinter as tk
 
 from src.version.v6_func import test_calc
@@ -9,8 +20,10 @@ def test_gui():
     def button_push():
         que = entry_que.get()
         cor = entry_cor_ans.get()
-        print(test_calc(que, cor) + "%")
+        # print(test_calc(que, cor) + "%")
     #    上を消してここの下にGUIに結果を載せる処理を書く
+        result_text = tk.Label(frame_output, text="正答率："+test_calc(que, cor)+"%", font=("Arial", 30))
+        result_text.pack()
 
     root = tk.Tk()
     root.title("GUI_test_app")
