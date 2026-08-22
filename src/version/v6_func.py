@@ -14,7 +14,7 @@ def test_calc(que, cor):
             # rateはdecimal型なのでstrに変形する
             return str(rate)
     except ValueError:
-       print("ValueError")
-
+        print("ValueError")
+        return
 
 
