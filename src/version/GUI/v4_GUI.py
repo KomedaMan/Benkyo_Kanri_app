@@ -2,6 +2,7 @@
 
 import tkinter as tk
 from tkcalendar import DateEntry
+from src.version.func.v1_func import test_calc
 
 class MainFrame(tk.Frame):
     def __init__(self, root=None):
@@ -10,9 +11,11 @@ class MainFrame(tk.Frame):
 
         self.title_form = Title(self.root)
         self.input_form = InputForm(self.root)
+        self.output_form = OutputForm(self.root)
 
         self.title_form.pack()
-        self.input_form.pack()
+        self.input_form.pack(side="left")
+        self.output_form.pack(side="left")
 
 class Title(tk.Frame):
     def __init__(self, root=None):
@@ -38,16 +41,28 @@ class Title(tk.Frame):
         explain.pack(pady=10)
 
 class InputForm(tk.Frame):
-    def __init__(self, root=None):
+    def __init__(self, root=None, res=None):
         super().__init__(root, width=720, height=400,
                          borderwidth=1, relief="groove")
+        self.date_entry = None
         self.root = root
         self.pack(anchor="nw", padx=10, pady=20)
         self.pack_propagate(0)
         self.create_input_widgets()
+        self.result_text = res
 
     # 入力欄ウィジェットの作成
     def create_input_widgets(self):
+        # 計算ボタンを押下したときの処理
+        def button_push():
+            que = self.que_entry.get()
+            cor = self.ans_entry.get()
+            try:
+                text_react = "正答率" + test_calc(que, cor) + "%"
+            except TypeError:
+                text_react = "入力が不正です"
+            self.result_text.config(text=text_react)
+
         """入力欄（日付、回答数、正答数）のウィジェットを作成する"""
         """ 
         ==selfについて==
@@ -79,13 +94,22 @@ class InputForm(tk.Frame):
         self.ans_entry.grid(row=2, column=1, padx=20, pady=(10, 50))
 
         # 計算ボタン
-        calc_button = tk.Button(self, text="計算")
+        calc_button = tk.Button(self, text="計算", command=button_push)
         calc_button.pack(side="bottom", pady=10)
 
+class OutputForm(tk.Frame):
+    def __init__(self, root=None):
+        super().__init__(root, width=720, height=400,
+                         borderwidth=1, relief="groove")
+        self.result_text = None
+        self.root = root
+        self.pack(anchor="nw", padx=10, pady=20)
+        self.pack_propagate(0)
+        self.create_output_widgets()
 
-
-
-
+    def create_output_widgets(self):
+        self.result_text = tk.Label(self, text="", font=("Arial", 30))
+        self.result_text.pack(pady=10)
 
 root = tk.Tk()
 root.title("GUI_test_app")
