@@ -16,7 +16,8 @@ class MainFrame(tk.Frame):
 
 class Title(tk.Frame):
     def __init__(self, root=None):
-        super().__init__(root, width=1440, height=200)
+        super().__init__(root, width=1000, height=200,
+                         borderwidth=1, relief="ridge", background="lightblue")
         self.root = root
         self.pack()
         self.pack_propagate(0)
@@ -24,18 +25,21 @@ class Title(tk.Frame):
 
     def title_text(self):
         # タイトル
-        title = tk.Label(self, text="勉強記録", font=("Arial", 30, "bold"))
-        title.pack()
+        title = tk.Label(self,
+                         text="勉強記録",
+                         font=("Arial", 30, "bold"),
+                         background="lightblue")
+        title.pack(pady=(50, 0))
         explain = tk.Message(self,
                              text="日付と勉強記録を入力すると今日やった分の"
                                   "勉強記録が振り返れます。",
-                             width=200)
+                             width=720,
+                             background="lightblue")
         explain.pack(pady=10)
 
 class InputForm(tk.Frame):
     def __init__(self, root=None):
-        super().__init__(root, width=720, height=400,
-                         borderwidth=1)
+        super().__init__(root, width=720, height=400)
         self.root = root
         self.pack(anchor="nw")
         self.pack_propagate(0)
@@ -56,10 +60,10 @@ class InputForm(tk.Frame):
 
         # 日付
         date_label = tk.Label(self, text="日付")
-        date_label.grid(row=0, column=0, padx=(100, 10))
+        date_label.grid(row=0, column=0, padx=(100, 10), pady=10)
         self.date_entry = DateEntry(self,width=12, background='green',
                 foreground='white', borderwidth=20, locale='ja_JP')
-        self.date_entry.grid(row=0, column=1, padx=20)
+        self.date_entry.grid(row=0, column=1, padx=20, pady=10)
 
         # 問題数
 
