@@ -44,6 +44,8 @@ class InputForm(tk.Frame):
     def __init__(self, root=None, res=None):
         super().__init__(root, width=720, height=400,
                          borderwidth=1, relief="groove")
+        self.ans_entry = None
+        self.que_entry = None
         self.date_entry = None
         self.root = root
         self.pack(anchor="nw", padx=10, pady=20)
