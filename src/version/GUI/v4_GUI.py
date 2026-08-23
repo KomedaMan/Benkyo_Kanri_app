@@ -7,22 +7,32 @@ from src.version.func.v1_func import test_calc
 class MainFrame(tk.Frame):
     def __init__(self, root=None):
         super().__init__(root, width=1440, height=1024)
+        def button_push():
+            que = self.input_form.que_entry.get()
+            cor = self.input_form.ans_entry.get()
+            try:
+                text_react = "正答率" + test_calc(que, cor) + "%"
+            except TypeError:
+                text_react = "入力が不正です"
+            self.output_form.result_text.config(text=text_react)
         self.root = root
 
-        self.title_form = Title(self.root)
-        self.input_form = InputForm(self.root)
-        self.output_form = OutputForm(self.root)
+        self.title_form = Title()
+        self.input_form = InputForm(button_push)
+        self.output_form = OutputForm()
 
-        self.title_form.pack()
-        self.input_form.pack(side="left")
-        self.output_form.pack(side="left")
+        self.title_form.grid(row=0,column=0, columnspan=2)
+        self.input_form.grid(row=1, column=0, padx=10, pady=20)
+        self.output_form.grid(row=1, column=1, padx=10, pady=20)
+
+
 
 class Title(tk.Frame):
-    def __init__(self, root=None):
-        super().__init__(root, width=1000, height=200,
+    def __init__(self):
+        super().__init__(root, width=1440, height=200,
                          borderwidth=1, relief="ridge", background="lightblue")
-        self.root = root
-        self.pack()
+        # self.root = root
+        # self.pack()
         self.pack_propagate(0)
         self.title_text()
 
@@ -41,29 +51,25 @@ class Title(tk.Frame):
         explain.pack(pady=10)
 
 class InputForm(tk.Frame):
-    def __init__(self, root=None, res=None):
-        super().__init__(root, width=720, height=400,
+    def __init__(self, button_push):
+        super().__init__(root, width=600, height=200,
                          borderwidth=1, relief="groove")
         self.ans_entry = None
         self.que_entry = None
         self.date_entry = None
-        self.root = root
-        self.pack(anchor="nw", padx=10, pady=20)
+        # self.root = root
+        self.button_push = button_push
+        # self.pack(anchor="nw", padx=10, pady=20)
         self.pack_propagate(0)
         self.create_input_widgets()
-        self.result_text = res
+        # 計算ボタン
+        calc_button = tk.Button(self, text="計算", command=self.button_push)
+        calc_button.pack(side="bottom", pady=10)
 
     # 入力欄ウィジェットの作成
     def create_input_widgets(self):
         # 計算ボタンを押下したときの処理
-        def button_push():
-            que = self.que_entry.get()
-            cor = self.ans_entry.get()
-            try:
-                text_react = "正答率" + test_calc(que, cor) + "%"
-            except TypeError:
-                text_react = "入力が不正です"
-            self.result_text.config(text=text_react)
+
 
         """入力欄（日付、回答数、正答数）のウィジェットを作成する"""
         """ 
@@ -95,17 +101,15 @@ class InputForm(tk.Frame):
         self.ans_entry = tk.Entry(self, width=15)
         self.ans_entry.grid(row=2, column=1, padx=20, pady=(10, 50))
 
-        # 計算ボタン
-        calc_button = tk.Button(self, text="計算", command=button_push)
-        calc_button.pack(side="bottom", pady=10)
+
 
 class OutputForm(tk.Frame):
-    def __init__(self, root=None):
-        super().__init__(root, width=720, height=400,
+    def __init__(self):
+        super().__init__(root, width=600, height=200,
                          borderwidth=1, relief="groove")
         self.result_text = None
-        self.root = root
-        self.pack(anchor="nw", padx=10, pady=20)
+        # self.root = root
+        # self.pack(anchor="nw", padx=10, pady=20)
         self.pack_propagate(0)
         self.create_output_widgets()
 
