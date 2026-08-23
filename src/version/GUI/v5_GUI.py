@@ -13,7 +13,7 @@
 
 import tkinter as tk
 
-from src.version.v6_func import test_calc
+from src.version.func.v6_func import test_calc
 
 # GUI関数（メイン処理で使えるように関数化する。）
 def test_gui():
