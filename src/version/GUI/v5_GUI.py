@@ -1,70 +1,40 @@
-"""可読性の向上を目的として、フレームをクラス化して作成してみる"""
-"""
-本当は、今日の日付、今日の解いた問題数、今日の正答数、今日の正答率を出力したい。
-そのためには、昨日まで解いた問題数、昨日までの正答数が保存されていなければならない。
-まずはリストか辞書で管理することでそれを計算して出せるようにならなければいけない。
-具体的には
-record=[
-{
-    "date": "yyyy-mm-dd",
-    "question": 100,
-    "correct": 30
-}
-]
-みたいな感じ。
-正答率はリストの値から導き出される値なので保存しなくてもよい。
-後々データベース化するならば正規化のことも考えて、重複する意味の値は除いたほうがよい。
-"""
 import tkinter as tk
 from tkcalendar import DateEntry
 from src.version.func.v1_func import test_calc
 
-# アプリケーション全体のフレーム作成用
 class MainFrame(tk.Frame):
     def __init__(self, root=None):
         super().__init__(root, width=1440, height=1024)
-        # self.root = root
+        def button_push():
+            que = self.input_form.que_entry.get()
+            cor = self.input_form.ans_entry.get()
+            try:
+                text_react = "正答率" + test_calc(que, cor) + "%"
+            except TypeError:
+                text_react = "入力が不正です"
+            self.output_form.result_text.config(text=text_react)
+        self.root = root
 
-        # 部品ごとのフレーム
         self.title_form = Title()
-        self.input_form = InputForm(self.button_push)
+        self.input_form = InputForm(button_push)
         self.output_form = OutputForm()
 
         self.title_form.grid(row=0,column=0, columnspan=2)
         self.input_form.grid(row=1, column=0, padx=10, pady=20)
         self.output_form.grid(row=1, column=1, padx=10, pady=20)
 
-    # 計算ボタンを押下したときの処理
-    def button_push(self):
-        """計算ボタンを押したときに正答率をOutputFrameに記載する"""
 
-        # 値を直接渡すと保守性が下がる。InputFormの値を直接知ることになり
-        # InputFormの内部構造に依存してしまうため、関数を作りそれを渡したほうがよい？
-        # que = self.input_form.que_entry.get()
-        # cor = self.input_form.ans_entry.get()
 
-        que, cor = self.input_form.get_values()
-        try:
-            text_react = "正答率" + test_calc(que, cor) + "%"
-        except TypeError:
-            text_react = "入力が不正です"
-        self.output_form.result_text.config(text=text_react)
-
-# アプリケーション上部のタイトルとその説明に使用するフレーム作成用
 class Title(tk.Frame):
     def __init__(self):
         super().__init__(root, width=1440, height=200,
                          borderwidth=1, relief="ridge", background="lightblue")
-        # 子クラスとして親クラスのrootを参照するため、無効化
         # self.root = root
-        # MainFrameでpackしているのと２重になっていたので無効化。
-        # 有効化しても動くが、無駄ではある。
         # self.pack()
         self.pack_propagate(0)
         self.title_text()
 
     def title_text(self):
-        """アプリケーションの見出しとその説明分を記載するための処理"""
         # タイトル
         title = tk.Label(self,
                          text="勉強記録",
@@ -79,32 +49,26 @@ class Title(tk.Frame):
         explain.pack(pady=10)
 
 class InputForm(tk.Frame):
-    """
-    中央左側に入力用のフレームを作成する。入力された値はMainFrameのボタン押下関数の
-
-    """
     def __init__(self, button_push):
         super().__init__(root, width=600, height=200,
                          borderwidth=1, relief="groove")
-        # 下３つはpycharmが黄色い線で文句をつけてくるが基本無視でよい。
-        # ちなみに無効化しなくても問題なく動作する。
-        # self.ans_entry = None
-        # self.que_entry = None
-        # self.date_entry = None
+        self.ans_entry = None
+        self.que_entry = None
+        self.date_entry = None
         # self.root = root
-
-        # もともとここにボタン押下の関数があったが、移動したため無効化
-        # self.button_push = button_push
-        # packがメインフレームと被っていたため無効化
+        self.button_push = button_push
         # self.pack(anchor="nw", padx=10, pady=20)
         self.pack_propagate(0)
         self.create_input_widgets()
         # 計算ボタン
-        calc_button = tk.Button(self, text="計算", command=button_push)
+        calc_button = tk.Button(self, text="計算", command=self.button_push)
         calc_button.pack(side="bottom", pady=10)
 
     # 入力欄ウィジェットの作成
     def create_input_widgets(self):
+        # 計算ボタンを押下したときの処理
+
+
         """入力欄（日付、回答数、正答数）のウィジェットを作成する"""
         """ 
         ==selfについて==
@@ -114,6 +78,8 @@ class InputForm(tk.Frame):
         ローカル変数=>関数の処理内で完結できる変数
         インスタンス変数=>メソッドの実行が終了した後も保持する変数
         """
+
+
         # 日付(row=0)
         date_label = tk.Label(self, text="日付")
         date_label.grid(row=0, column=0, padx=20, pady=(50, 10))
@@ -133,18 +99,13 @@ class InputForm(tk.Frame):
         self.ans_entry = tk.Entry(self, width=15)
         self.ans_entry.grid(row=2, column=1, padx=20, pady=(10, 50))
 
-    # メインフレームへ問題数と正答数の値を渡す関数
-    def get_values(self):
-        que = self.que_entry.get()
-        cor = self.ans_entry.get()
-        return que, cor
+
 
 class OutputForm(tk.Frame):
     def __init__(self):
         super().__init__(root, width=600, height=200,
                          borderwidth=1, relief="groove")
-        # 下３つはTitleやInputFrameと同様の理由で無効化
-        # self.result_text = None
+        self.result_text = None
         # self.root = root
         # self.pack(anchor="nw", padx=10, pady=20)
         self.pack_propagate(0)
