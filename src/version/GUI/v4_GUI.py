@@ -39,9 +39,10 @@ class Title(tk.Frame):
 
 class InputForm(tk.Frame):
     def __init__(self, root=None):
-        super().__init__(root, width=720, height=400)
+        super().__init__(root, width=720, height=400,
+                         borderwidth=1, relief="groove")
         self.root = root
-        self.pack(anchor="nw")
+        self.pack(anchor="nw", padx=10, pady=20)
         self.pack_propagate(0)
         self.create_input_widgets()
 
@@ -58,14 +59,30 @@ class InputForm(tk.Frame):
         """
 
 
-        # 日付
+        # 日付(row=0)
         date_label = tk.Label(self, text="日付")
-        date_label.grid(row=0, column=0, padx=(100, 10), pady=10)
+        date_label.grid(row=0, column=0, padx=20, pady=(50, 10))
         self.date_entry = DateEntry(self,width=12, background='green',
                 foreground='white', borderwidth=20, locale='ja_JP')
-        self.date_entry.grid(row=0, column=1, padx=20, pady=10)
+        self.date_entry.grid(row=0, column=1, padx=20, pady=(50, 10))
 
-        # 問題数
+        # 問題数(row=1)
+        que_label =tk.Label(self, text="解いた問題数")
+        que_label.grid(row=1, column=0, padx=20, pady=10)
+        self.que_entry = tk.Entry(self, width=15)
+        self.que_entry.grid(row=1, column=1, padx=20, pady=10)
+
+        # 正答数(row=2)
+        ans_label = tk.Label(self, text="正解数")
+        ans_label.grid(row=2, column=0, padx=20, pady=(10, 50))
+        self.ans_entry = tk.Entry(self, width=15)
+        self.ans_entry.grid(row=2, column=1, padx=20, pady=(10, 50))
+
+        # 計算ボタン
+        calc_button = tk.Button(self, text="計算")
+        calc_button.pack(side="bottom", pady=10)
+
+
 
 
 
