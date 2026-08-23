@@ -57,7 +57,7 @@ def test_gui2():
     date_label =tk.Label(header_frame, text="日付", font=("Arial", 20))
     date_label.grid(row=0, column=0, padx=10, pady=10)
     date_entry = DateEntry(header_frame, width=50, background="green",
-                           foreground="white", borderwidth=10, lovate="ja_JP")
+                           foreground="white", borderwidth=10, locate="ja_JP")
     date_entry.grid(row=1, column=0, padx=10, pady=10)
 
     # 解いた問題数
