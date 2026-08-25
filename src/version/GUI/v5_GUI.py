@@ -35,6 +35,8 @@ class MainFrame(tk.Frame):
             text_react = "正答率" + test_calc(que, cor) + "%"
         except TypeError:
             text_react = "入力が不正です"
+        self.output_form.result_que_text.config(text="解いた問題：" + str(que) + " 問")
+        self.output_form.result_cor_text.config(text="正答数：" + str(cor) + " 問")
         self.output_form.result_text.config(text=text_react)
 
 # アプリケーション上部のタイトルとその説明に使用するフレーム作成用
@@ -136,14 +138,16 @@ class OutputForm(tk.Frame):
         ボタンを押し、計算されるとこのテキストがconfigで書き換えられる
         """
         # この下に今日解いた問題数を表示する処理を記載する
-        ...
+        self.result_que_text = tk.Label(self, text="", font=("Arial", 20))
+        self.result_que_text.pack(pady=(10,0))
 
         # この下に今日解いた正答数を表示する処理を記載する。
-        ...
+        self.result_cor_text = tk.Label(self, text="", font=("Arial", 20))
+        self.result_cor_text.pack()
 
         # 正答率を表示する
         self.result_text = tk.Label(self, text="", font=("Arial", 30))
-        self.result_text.pack(pady=10)
+        self.result_text.pack()
 
 # GUI作成メイン処理
 def main():
