@@ -1,6 +1,6 @@
 """
 ~~やること~~
-・出力に「今日解いた問題数」、「今日の正答数」を追加して表示できるようにする。
+・出力に「今日解いた問題数」、「今日の正答数」を追加して表示できるようにする。=>済
 ・リストかなんかで、出力した値を記憶できるようにする
 
 ===今やらないが、今後すること===
@@ -11,6 +11,20 @@
 import tkinter as tk
 from tkcalendar import DateEntry
 from src.version.func.v1_func import test_calc
+
+# 記憶用リスト{"日付":oo, "問題数":oo, "正答数":oo}
+record =[]
+"""
+record.append({
+"date": (str)date, 
+"questions": (int)que,
+""corrects": (int)cor,
+})
+で追加する
+もしかしたらこれはメイン処理で持っていたほうがいいかも
+"""
+
+
 
 # アプリケーション全体のフレーム作成用
 class MainFrame(tk.Frame):
