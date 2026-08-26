@@ -24,6 +24,8 @@ record.append({
 })
 で追加する
 もしかしたらこれはメイン処理で持っていたほうがいいかも
+=>新たにdata保存用のディレクトリを作成してそこに保存
+後々データベースを保存
 """
 
 
@@ -50,13 +52,30 @@ class MainFrame(tk.Frame):
         cor = int(cor)
         try:
             """この辺の処理系はfuncに書いたほうがいいかも？"""
-            # dateがすでにあるならば、更新にする
-            # if data in v1_data["date"]
-            v1_data.record.append({
-                "date": date,
-                "questions": que,
-                "corrects": cor
-            })
+            # データがあるとき
+            if v1_data.record:
+                exists = any(d.get("date") == date for d in v1_data.record)
+                data_num = len(v1_data.record)
+                # dateがすでにあるならば、更新にする
+                if exists:
+                    for i in range(data_num):
+                        if v1_data.record[i]["date"] == date:
+                            v1_data.record[i]["questions"] = que
+                            v1_data.record[i]["corrects"] = cor
+                # ないならば追加する
+                else:
+                    v1_data.record.append({
+                        "date": date,
+                        "questions": que,
+                        "corrects": cor
+                    })
+            # データがない場合は、追加処理をする
+            else:
+                v1_data.record.append({
+                    "date": date,
+                    "questions": que,
+                    "corrects": cor
+                })
             # データが二つ以上あるとき、昨日のデータと今日のデータの差を出力する
             if len(v1_data.record) > 1:
                 que_today = v1_data.record[-1]["questions"]
