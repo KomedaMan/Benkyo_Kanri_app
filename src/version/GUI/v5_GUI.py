@@ -11,9 +11,11 @@
 import tkinter as tk
 from tkcalendar import DateEntry
 from src.version.func.v1_func import test_calc
+from src.version.data import v1_data
+
 
 # 記憶用リスト{"日付":oo, "問題数":oo, "正答数":oo}
-record =[]
+# record =[]
 """
 record.append({
 "date": (str)date, 
@@ -43,9 +45,16 @@ class MainFrame(tk.Frame):
     # 計算ボタンを押下したときの処理
     def button_push(self):
         """計算ボタンを押したときに正答率をOutputFrameに記載する"""
+        date, que, cor = self.input_form.get_values()
 
-        que, cor = self.input_form.get_values()
         try:
+            v1_data.record.append({
+                "date": date,
+                "questions": que,
+                "corrects": cor
+            })
+
+
             text_react = "正答率" + test_calc(que, cor) + "%"
         except TypeError:
             text_react = "入力が不正です"
@@ -131,9 +140,10 @@ class InputForm(tk.Frame):
         MainFrameで値を直接定義すると子クラスとの内部構造に依存するため、
         関数を作りそれを渡したほうがよいと考え作成。
         """
+        date = self.date_entry.get()
         que = self.que_entry.get()
         cor = self.ans_entry.get()
-        return que, cor
+        return date, que, cor
 
 
 # アプリケーションの中央左側に位置する計算などの結果を出力するフォーム作成用
