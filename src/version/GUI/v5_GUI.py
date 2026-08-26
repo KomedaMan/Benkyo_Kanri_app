@@ -13,7 +13,6 @@ from tkcalendar import DateEntry
 from src.version.func.v1_func import test_calc
 from src.version.data import v1_data
 
-
 # 記憶用リスト{"日付":oo, "問題数":oo, "正答数":oo}
 # record =[]
 """

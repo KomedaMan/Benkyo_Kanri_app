@@ -1,4 +1,5 @@
 from decimal import Decimal, ROUND_HALF_UP
+from src.version.data import v1_data
 
 def test_calc(que, cor):
     try:
@@ -16,5 +17,8 @@ def test_calc(que, cor):
     except ValueError:
         print("ValueError")
         return
+
+def data_input(data, que, cor):
+
 
 
