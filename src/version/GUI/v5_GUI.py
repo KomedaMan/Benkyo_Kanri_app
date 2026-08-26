@@ -50,6 +50,8 @@ class MainFrame(tk.Frame):
         cor = int(cor)
         try:
             """この辺の処理系はfuncに書いたほうがいいかも？"""
+            # dateがすでにあるならば、更新にする
+            # if data in v1_data["date"]
             v1_data.record.append({
                 "date": date,
                 "questions": que,
