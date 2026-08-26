@@ -46,21 +46,56 @@ class MainFrame(tk.Frame):
     def button_push(self):
         """計算ボタンを押したときに正答率をOutputFrameに記載する"""
         date, que, cor = self.input_form.get_values()
-
+        que = int(que)
+        cor = int(cor)
         try:
+            """この辺の処理系はfuncに書いたほうがいいかも？"""
             v1_data.record.append({
                 "date": date,
                 "questions": que,
                 "corrects": cor
             })
+            # データが二つ以上あるとき、昨日のデータと今日のデータの差を出力する
+            if len(v1_data.record) > 1:
+                que_today = v1_data.record[-1]["questions"]
+                que_yesterday = v1_data.record[-2]["questions"]
 
+                cor_today = v1_data.record[-1]["corrects"]
+                cor_yesterday = v1_data.record[-2]["corrects"]
+                # 問題数と正答数がともに今日のほうが多くなっているとき、昨日との差を求める
+                # （正答数は昨日と同じでもよい。)
+                if que_today > que_yesterday and cor_today >= cor_yesterday:
+                    que = que_today - que_yesterday
+                    cor = cor_today - cor_yesterday
+                # 昨日よりも問題を解いているにも関わらず、昨日よりも正答数が少ない場合、
+                # 新しく問題を始めたとカウントするので、処理はしない。
+                elif que_today > que_yesterday and cor_today < cor_yesterday:
+                    pass
+                # 問題数は同じなのに正答数が昨日より多くなっているときは入力が不正とする
+                elif que_today == que_yesterday and cor_today > cor_yesterday:
+                    raise TypeError
+                # 昨日と今日で値が変わっていないときは、今日は何もしていないと判定するため、
+                # 処理を行わず、先に記録した今日のレコードのデータを破棄する
+                elif que_today == que_yesterday and cor_today == cor_yesterday:
+                    del v1_data.record[-1]
+                # 昨日と今日で問題数が変わっておらず、正答数が少なくなった場合は
+                # 新しく問題を始めたとカウントするので、処理しない。
+                elif que_today == que_yesterday and cor_today < cor_yesterday:
+                    pass
+                # 昨日よりも問題数が少なくなった時は新しく問題を始めたとカウントする
+                else:
+                    pass
 
-            text_react = "正答率" + test_calc(que, cor) + "%"
+            text_que = "解いた問題：" + str(que) + " 問"
+            text_cor = "正答数：" + str(cor) + " 問"
+            text_rate = "正答率" + test_calc(que, cor) + "%"
         except TypeError:
-            text_react = "入力が不正です"
-        self.output_form.result_que_text.config(text="解いた問題：" + str(que) + " 問")
-        self.output_form.result_cor_text.config(text="正答数：" + str(cor) + " 問")
-        self.output_form.result_text.config(text=text_react)
+            text_que = ""
+            text_cor = ""
+            text_rate = "入力が不正です"
+        self.output_form.result_que_text.config(text=text_que)
+        self.output_form.result_cor_text.config(text=text_cor)
+        self.output_form.result_text.config(text=text_rate)
 
 # アプリケーション上部のタイトルとその説明に使用するフレーム作成用
 class Title(tk.Frame):
